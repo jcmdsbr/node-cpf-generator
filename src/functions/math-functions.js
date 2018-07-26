@@ -1,8 +1,7 @@
 'use strict';
 
 exports.getRandom = (n) => {
-    var ranNum = Math.round(Math.random() * n);
-    return ranNum;
+    return Math.round(Math.random() * n);
 }
 
 exports.mod = (dividend, divider) => {

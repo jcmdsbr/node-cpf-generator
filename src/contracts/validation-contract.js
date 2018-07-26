@@ -1,5 +1,6 @@
 'use strict';
 
+let errors = [];
 class ValidationContract {
     constructor() {
         errors = [];

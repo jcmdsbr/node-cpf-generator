@@ -4,8 +4,7 @@ const ValidationContract = require("../contracts/validation-contract");
 
 class CnpjContract extends ValidationContract {}
 
-CnpjContract.prototype.algorithmIsValid = () => {
-    cnpj = cnpj.replace(/[^\d]+/g, '');
+CnpjContract.prototype.algorithmIsValid = (cnpj) => {
 
     if (cnpj == '') return false;
 
@@ -32,7 +31,7 @@ CnpjContract.prototype.algorithmIsValid = () => {
 
     let sum = 0;
     let pos = size - 7;
-    for (i = size; i >= 1; i--) {
+    for (let i = size; i >= 1; i--) {
         sum += numbers.charAt(size - i) * pos--;
         if (pos < 2)
             pos = 9;
@@ -46,7 +45,7 @@ CnpjContract.prototype.algorithmIsValid = () => {
     sum = 0;
     pos = size - 7;
 
-    for (i = size; i >= 1; i--) {
+    for (let i = size; i >= 1; i--) {
         sum += numbers.charAt(size - i) * pos--;
         if (pos < 2)
             pos = 9;

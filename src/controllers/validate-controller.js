@@ -2,6 +2,7 @@
 
 const CnpjContract = require('../contracts/cnpj-validation-contract');
 const CpfContract = require('../contracts/cpf-validation-contract');
+const errorCallback = require("../functions/error-functions");
 
 exports.get = async (req, res, next) => {
     res.status(200).send({
@@ -14,11 +15,14 @@ exports.get = async (req, res, next) => {
 exports.validateCpf = async (req, res, next) => {
     try {
 
-        let cpf = req.body.cpf;
-        let contract = new CnpjContract();
+        let contract = new CpfContract();
+        let cpf = req.body.cpf.toString();
+
+        cpf = cpf.replace(/[^\d]+/g, '');
+
         contract.isRequired(cpf, "O Algoritimo está vazio.");
         contract.isFixedLen(cpf, 11, "CPF não possui a quantidade certa de algoritimos.");
-       
+
         if (!contract.isValid()) {
             res.status(400).send(contract.errors()).end();
             return;
@@ -28,19 +32,20 @@ exports.validateCpf = async (req, res, next) => {
         res.status(200).send(isValid);
 
     } catch (e) {
-        res.status(500).send({
-            message: 'Falha ao processar sua requisição'
-        });
+        res.status(500).send(errorCallback(e));
     }
 }
 
 exports.validateCnpj = async (req, res, next) => {
     try {
-        let cnpj = req.body.cnpj;
-        let contract = new CpfContract();
+        let contract = new CnpjContract();
+        let cnpj = req.body.cnpj.toString();
+
+        cnpj = cnpj.replace(/[^\d]+/g, '');
+
         contract.isRequired(cnpj, "O Algoritimo está vazio.");
         contract.isFixedLen(cnpj, 14, "CNPJ não possui a quantidade certa de algoritimos.");
-       
+
         if (!contract.isValid()) {
             res.status(400).send(contract.errors()).end();
             return;
@@ -49,8 +54,6 @@ exports.validateCnpj = async (req, res, next) => {
         let isValid = contract.algorithmIsValid(cnpj);
         res.status(200).send(isValid);
     } catch (e) {
-        res.status(500).send({
-            message: 'Falha ao processar sua requisição'
-        });
+        res.status(500).send(errorCallback(e));
     }
 }
