@@ -2,7 +2,7 @@
 
 const CpfFactory = require("../factories/cpf-factory")
 const CnpjFactory = require("../factories/cnpj-factory")
-const errorCallback = require("../functions/error-functions");
+const error = require("../functions/error-functions");
 
 exports.get = async (req, res, next) => {
     res.status(200).send({
@@ -21,7 +21,7 @@ exports.getCpf = async (req, res, next) => {
         res.status(200).send(cpf);
 
     } catch (e) {
-        res.status(500).send(errorCallback(e));
+        error.errorHandler(err, req, res, next);
     }
 }
 
@@ -34,6 +34,6 @@ exports.getCnpj = async (req, res, next) => {
         res.status(200).send(cnpj);
 
     } catch (e) {
-        res.status(500).send(errorCallback(e));
+        error.errorHandler(err, req, res, next);
     }
 }

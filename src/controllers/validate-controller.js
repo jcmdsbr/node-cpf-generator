@@ -2,7 +2,7 @@
 
 const CnpjContract = require('../contracts/cnpj-validation-contract');
 const CpfContract = require('../contracts/cpf-validation-contract');
-const errorCallback = require("../functions/error-functions");
+const error = require("../functions/error-functions");
 
 exports.get = async (req, res, next) => {
     res.status(200).send({
@@ -14,6 +14,8 @@ exports.get = async (req, res, next) => {
 
 exports.validateCpf = async (req, res, next) => {
     try {
+
+        console.log(req.body);
 
         let contract = new CpfContract();
         let cpf = req.body.cpf.toString();
@@ -29,10 +31,10 @@ exports.validateCpf = async (req, res, next) => {
         }
 
         let isValid = contract.algorithmIsValid(cpf);
-        res.status(200).send(isValid);
+        res.status(200).send({});
 
-    } catch (e) {
-        res.status(500).send(errorCallback(e));
+    } catch (err) {
+        error.errorHandler(err, req, res, next);
     }
 }
 
@@ -54,6 +56,6 @@ exports.validateCnpj = async (req, res, next) => {
         let isValid = contract.algorithmIsValid(cnpj);
         res.status(200).send(isValid);
     } catch (e) {
-        res.status(500).send(errorCallback(e));
+        error.errorHandler(err, req, res, next);
     }
 }

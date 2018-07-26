@@ -2,7 +2,9 @@
 
 const ValidationContract = require("../contracts/validation-contract");
 
-class CnpjContract extends ValidationContract {}
+class CnpjContract extends ValidationContract {
+   
+}
 
 CnpjContract.prototype.algorithmIsValid = (cnpj) => {
 

@@ -2,7 +2,9 @@
 
 const ValidationContract = require("../contracts/validation-contract");
 
-class CpfContract extends ValidationContract {}
+class CpfContract extends ValidationContract {
+   
+}
 
 CpfContract.prototype.algorithmIsValid = (cpf) => {
     let sum, leftover;

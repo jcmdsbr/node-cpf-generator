@@ -12,24 +12,32 @@ const server = http.createServer(app);
 server.listen(port);
 
 server.on('listening', onListening);
+server.on('error', onError);
 
 function normalizePort(val) {
-    let port = parseInt(val, 10);
-  
-    if (isNaN(port)) {
-      return val;
-    }
-    if (port >= 0) {
-      return port;
-    }
-    return false;
+  let port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    return val;
   }
-  
-  function onListening() {
-    let addr = server.address();
-    let bind = typeof addr === 'string'
-      ? 'pipe ' + addr
-      : 'port ' + addr.port;
-    debug('Listening on ' + bind);
+  if (port >= 0) {
+    return port;
   }
-  
+  return false;
+}
+
+function onListening() {
+  let addr = server.address();
+  let bind = typeof addr === 'string' ?
+    'pipe ' + addr :
+    'port ' + addr.port;
+
+  console.log('Listening on ' + bind);
+  debug('Listening on ' + bind);
+
+}
+
+function onError(error) {
+  console.log(error.code);
+  debug('Error code ' + error.code);
+}

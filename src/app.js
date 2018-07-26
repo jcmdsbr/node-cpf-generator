@@ -1,8 +1,9 @@
 'use strict';
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+
+const error = require("./functions/error-functions");
 
 // Carrega as Rotas
 const generatorRouter = require('./routes/generator-router');
@@ -30,5 +31,6 @@ app.use(function (req, res, next) {
 app.use('/', indexRouter);
 app.use('/gerar', generatorRouter);
 app.use('/validar', validateRouter);
+app.use(error.errorHandler)
 
 module.exports = app;
