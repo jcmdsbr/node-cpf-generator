@@ -1,4 +1,7 @@
-const GeneratorFactory = require("../generators/fluent-generator")
+'use strict';
+
+const CpfFactory = require("../factories/cpf-factory")
+const CnpjFactory = require("../factories/cnpj-factory")
 
 
 exports.get = async (req, res, next) => {
@@ -11,8 +14,8 @@ exports.get = async (req, res, next) => {
 
 exports.getCpf = async (req, res, next) => {
     try {
-        let factory = new GeneratorFactory();
-        let cpf = factory.Cpf();
+        let factory = new CpfFactory();
+        let cpf = factory.Create();
         res.status(200).send(cpf);
     } catch (e) {
         res.status(500).send({
@@ -23,8 +26,8 @@ exports.getCpf = async (req, res, next) => {
 
 exports.getCnpj = async (req, res, next) => {
     try {
-        let factory = new GeneratorFactory();
-        let cnpj = factory.Cnpj();
+        let factory = new CnpjFactory();
+        let cnpj = factory.Create();
         res.status(200).send(cnpj);
     } catch (e) {
         res.status(500).send({

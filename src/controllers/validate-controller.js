@@ -1,4 +1,7 @@
-const ValidationContract = require('../validators/fluent-validator');
+'use strict';
+
+const CnpjContract = require('../contracts/cnpj-validation-contract');
+const CpfContract = require('../contracts/cpf-validation-contract');
 
 exports.get = async (req, res, next) => {
     res.status(200).send({
@@ -12,7 +15,7 @@ exports.validateCpf = async (req, res, next) => {
     try {
 
         let cpf = req.body.cpf;
-        let contract = new ValidationContract();
+        let contract = new CnpjContract();
         contract.isRequired(cpf, "O Algoritimo está vazio.");
         contract.isFixedLen(cpf, 11, "CPF não possui a quantidade certa de algoritimos.");
        
@@ -21,7 +24,7 @@ exports.validateCpf = async (req, res, next) => {
             return;
         }
 
-        let isValid = contract.CpfIsValid(cpf);
+        let isValid = contract.algorithmIsValid(cpf);
         res.status(200).send(isValid);
 
     } catch (e) {
@@ -34,7 +37,7 @@ exports.validateCpf = async (req, res, next) => {
 exports.validateCnpj = async (req, res, next) => {
     try {
         let cnpj = req.body.cnpj;
-        let contract = new ValidationContract();
+        let contract = new CpfContract();
         contract.isRequired(cnpj, "O Algoritimo está vazio.");
         contract.isFixedLen(cnpj, 14, "CNPJ não possui a quantidade certa de algoritimos.");
        
@@ -43,7 +46,7 @@ exports.validateCnpj = async (req, res, next) => {
             return;
         }
 
-        let isValid = contract.CnpjIsValid(cnpj);
+        let isValid = contract.algorithmIsValid(cnpj);
         res.status(200).send(isValid);
     } catch (e) {
         res.status(500).send({
