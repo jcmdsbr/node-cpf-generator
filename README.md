@@ -14,8 +14,8 @@ API em node que gera e valida cpf/cnpj
   {"cnpj":"77059769000100"} ou {"cpf": "60415123119"}
   
   # Link da api no azure: 
-    - https://ndgr.azurewebsites.net/gerar/cpf
-    - https://ndgr.azurewebsites.net/gerar/cnpj
-    - https://ndgr.azurewebsites.net/validar/cpf
-    - https://ndgr.azurewebsites.net/validar/cnpj
+    - https://cpfcnpj.azurewebsites.net/gerar/cpf
+    - https://cpfcnpj.azurewebsites.net/gerar/cnpj
+    - https://cpfcnpj.azurewebsites.net/validar/cpf
+    - https://cpfcnpj.azurewebsites.net/validar/cnpj
 
