@@ -1,7 +1,8 @@
-# Resumo
-API em node que gera e valida cpf/cnpj
+# Node Document Generator/Validator
 
-# Documentação
+- API em node que gera e valida cpf/cnpj
+
+## Descrição :books:
 
 - (GET)  ~/gerar/cpf    - retorna um json com um número de cpf valido.
 - (GET)  ~/gerar/cnpj   - retorna um json com um número de cnj valido.
@@ -11,11 +12,10 @@ API em node que gera e valida cpf/cnpj
 - Api tem inteligencia para tratar as mascaras dos numeros.
 - Caso o numero enviado não atenda os requisitos minimos (tamanho,formato texto) a api retornara uma mensagem de erro.
 - Formatado do json para o post
-  {"cnpj":"77059769000100"} ou {"cpf": "60415123119"}
-  
-  # Link da api no azure: 
-    - https://cpfcnpj.azurewebsites.net/gerar/cpf
-    - https://cpfcnpj.azurewebsites.net/gerar/cnpj
-    - https://cpfcnpj.azurewebsites.net/validar/cpf
-    - https://cpfcnpj.azurewebsites.net/validar/cnpj
 
+```json
+  {"cnpj":"77059769000100"} ou {"cpf": "60415123119"}
+```
+  
+  ***Ambiente do Azure Desativado!!** 
+  
