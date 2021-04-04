@@ -20,7 +20,8 @@ Se esse projeto te ajudou em alguma coisa, taquele pau na estrelinha \o/
 
 - Api tem inteligencia para tratar as mascaras dos numeros.
 - Caso o numero enviado não atenda os requisitos minimos (tamanho,formato texto) a api retornara uma mensagem de erro.
-- Formatado do json para o post
+
+### Formato do json para o post
 
 ```json
   {"cnpj":"77059769000100"} ou {"cpf": "60415123119"}
