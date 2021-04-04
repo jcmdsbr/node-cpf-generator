@@ -26,5 +26,5 @@ Se esse projeto te ajudou em alguma coisa, taquele pau na estrelinha \o/
   {"cnpj":"77059769000100"} ou {"cpf": "60415123119"}
 ```
   
-  ***Ambiente do Azure Desativado!!** 
+  ***Ambiente do Azure Desativado!!*** 🤯
   
