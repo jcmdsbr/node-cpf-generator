@@ -1,6 +1,15 @@
-# Node Document Generator/Validator
-
+# Node Document Generator/Validator :sunglasses:
+ 
 - API em node que gera e valida cpf/cnpj
+
+## Estrelinha! :star:
+
+Se esse projeto te ajudou em alguma coisa, taquele pau na estrelinha \o/
+
+## Para rodar esse projeto, você vai precisar das seguintes ferramentas :exclamation:
+
+- Visual Studio Code or another editor
+- Node 8+
 
 ## Descrição :books:
 
